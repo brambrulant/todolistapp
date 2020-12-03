@@ -11,6 +11,6 @@
     "dialect": "mysql"
   },
   "production": {
-    "use_env_variable": "https://brams-todolist-app.herokuapp.com/"
+    "use_env_variable": "https://brams-todolist-app.herokuapp.com/
   }
 }
