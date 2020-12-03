@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4000;
 
 const User = require("./models").user;
 const TodoList = require("./models").todoList;
@@ -10,17 +10,19 @@ app.use(cors());
 
 app.use(express.json());
 
-app.listen(port);
+app.listen(PORT, () => {
+  console.log(`listening on ports ${PORT}`);
+});
 
 app.post("/users", async (req, res, next) => {
   try {
     const email = req.body.email;
-    if (!email || email === " ") {
-      res.status(400).send("Must provide an email address");
-    } else {
-      const user = await User.create(req.body);
-      res.json(user);
-    }
+    // if (!email || email === " ") {
+    //   res.status(400).send("Must provide an email address");
+    // } else {
+    const user = await User.create(req.body);
+    res.json(user);
+    // }
   } catch (e) {
     next(e);
   }
